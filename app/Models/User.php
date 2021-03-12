@@ -78,7 +78,7 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsToMany(Role::class);
     }
 
     public function transaction()
@@ -97,7 +97,7 @@ class User extends Authenticatable
     */
     public function isAdmin()
     {
-         if($this->role()->where('role', 'admin')->exists()) return true;
+         return $this->role()->where('role', 'admin')->exists();
     }
 
     public function isNoob():bool
@@ -114,6 +114,11 @@ class User extends Authenticatable
             return true;
           }
          return false ;
+    }
+
+    public function getIsAdminAttribute()
+    {
+        return $this->isAdmin();
     }
 }
 
