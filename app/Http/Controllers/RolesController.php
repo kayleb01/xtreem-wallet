@@ -31,6 +31,14 @@ class RolesController extends Controller
 
    }
 
+   public function destroy(Role $role)
+   {
+        $this->isAdmin();
+        $role->delete();
+
+        return response()->json(['message' => 'Deleted']);
+   }
+
    public function isAdmin()
    {
     if (!auth()->user()->isAdmin) {
