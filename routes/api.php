@@ -5,12 +5,13 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RolesController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FlutterwaveController;
 use App\Http\Controllers\TransactionController;
-use Illuminate\Database\Events\TransactionCommitted;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('transaction/{id}', [TransactionController::class, 'show']);
     Route::post('transaction/store', [TransactionController::class, 'store']);
     Route::put('transaction/{transaction}/edit', [TransactionController::class, 'update']);
+
+    Route::get('roles', [RolesController::class, 'index']);
+    Route::post('role/store', [RolesController::class, 'store']);
+    Route::delete('role/{role}/destroy', [RolesController::class, 'destroy']);
 
 
     // The route that the button calls to initialize payment

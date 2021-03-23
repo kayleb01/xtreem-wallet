@@ -21,24 +21,28 @@ class RolesController extends Controller
        $this->isAdmin();
 
        $this->validate($request, [
-           'role' => 'required'
+           'role' => 'required|unique:roles,role'
        ]);
        $query = Role::create([
            'role' => $request->role
        ]);
 
-       return RoleResource::collection($query);
+       return new RoleResource($query);
 
    }
 
    public function destroy(Role $role)
    {
         $this->isAdmin();
-        $role->delete();
 
+        $role->delete();
         return response()->json(['message' => 'Deleted']);
    }
 
+   /***
+    * Check if the user is an admin
+    and grant him access or return error
+    */
    public function isAdmin()
    {
     if (!auth()->user()->isAdmin) {
