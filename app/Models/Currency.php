@@ -11,6 +11,7 @@ class Currency extends Model
     use HasFactory;
 
 
+    protected $fillable = ['type', 'exchange_rate', 'country'];
 
     /*
     *

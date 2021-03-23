@@ -10,13 +10,18 @@ class Transaction extends Model
 {
     use HasFactory;
 
-
+    protected $guarded = [];
 
     /*
     * Model relationships
     */
     public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function currency()
+    {
+        return $this->belongsTo(Currency::class);
     }
 }

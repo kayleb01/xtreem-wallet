@@ -15,9 +15,9 @@ class CurrenciesTableSeeder extends Seeder
     public function run()
     {
         DB::table('currencies')->insert([
-            'type' => 'GHC',
-            'exchange_rate' =>  66.22,
-            'country' => "Ghana",
+            'type' => 'NGN',
+            'exchange_rate' => 160,
+            'country' => "Nigeria",
             'created_at' => now(),
             'updated_at' => now(),
 
