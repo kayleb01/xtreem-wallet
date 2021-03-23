@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('transactions',[TransactionController::class, 'index']);
     Route::get('transaction/{id}', [TransactionController::class, 'show']);
     Route::post('transaction/store', [TransactionController::class, 'store']);
+    Route::put('transaction/{transaction}/edit', [TransactionController::class, 'update']);
 
 
     // The route that the button calls to initialize payment

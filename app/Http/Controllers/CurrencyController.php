@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Currency;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use BaconQrCode\Renderer\Path\Curve;
 use App\Http\Resources\CurrencyResource;
 
 class CurrencyController extends Controller
@@ -69,7 +67,7 @@ class CurrencyController extends Controller
         if ($update) {
             # Return response if  updated successfully...
               return  response()->json([
-                        'message' => 'Currency update'
+                        'message' => 'Currency updated'
                          ], 301);
         }else{
 

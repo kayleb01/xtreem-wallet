@@ -28,12 +28,8 @@ class TransactionController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'transaction_id' => 'required',
-            'action'         => 'required',
-            'currency_id'    => 'required',
-            'amount'         => 'required'
-        ]);
+        $this->validateRequest($request);
+
             $transaction = Transaction::create([
                 'transaction_id' => $request->transaction_id,
                 'action' => $request->action,
@@ -42,5 +38,53 @@ class TransactionController extends Controller
                 'amount' => $request->amount
             ]);
              return new TransactionResource($transaction);
+    }
+
+    public function update(Request $request, Transaction $transaction)
+    {
+        $this->isAdmin();
+
+        $query = $transaction->update($request->all());
+        if ($query) {
+            # Return response if  updated successfully...
+              return  response()->json([
+                        'message' => 'Transaction updated'
+                         ], 301);
+        }else{
+
+            return  response()->json([
+                'message' => 'Error updating record, please contact the Administrator'
+                 ], 500);
+        }
+
+    }
+
+    public function destroy(Transaction $transaction)
+    {
+    $this->isAdmin();
+    $transaction->delete();
+
+    return response()->json(['message' => 'Deleted'], 200);
+
+    }
+
+    public function isAdmin()
+        {
+            if (!auth()->user()->isAdmin) {
+                return response()->json(['error' => 'Unauthorized'], 401);
+            }
+        }
+
+    /**
+     * Validate requests
+     */
+    public function validateRequest($request)
+    {
+        $this->validate($request, [
+            'transaction_id' => 'required',
+            'action'         => 'required',
+            'currency_id'    => 'required',
+            'amount'         => 'required|numeric'
+        ]);
     }
 }
