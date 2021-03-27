@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Currency;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use KingFlamez\Rave\Facades\Rave as Flutterwave;
 
@@ -40,9 +42,19 @@ class FlutterwaveController extends Controller
 
         if (!$payment) {
             // notify something went wrong
-            return;
+            return response()->json(['error' => 'an unexpected error occured, please try again after some few minutes']);
         }
+        //dd($data);
+             Transaction::create([
 
+            'payment_type'      =>  $data['payment_options'],
+            'currency_id'       => $this->getCurrencyByType($data['currency']),
+            'status'            => 0,
+            'user_id'           => 1,
+            'amount'            => $data['amount'],
+            'created_at'        => now(),
+            'tx_ref'            => $data['tx_ref']
+        ]);
         return redirect($payment['link']);
     }
 
@@ -53,20 +65,57 @@ class FlutterwaveController extends Controller
     public function callback()
     {
 
-
         $data = Flutterwave::verifyTransaction(request()->transaction_id);
 
-        dd($data);
-        // Get the transaction from your DB using the transaction reference (txref)
-        // Check if you have previously given value for the transaction. If you have, redirect to your successpage else, continue
-        // Confirm that the $data['data']['status'] is 'successful'
-        // Confirm that the currency on your db transaction is equal to the returned currency
-        // Confirm that the db transaction amount is equal to the returned amount
-        // Update the db transaction record (including parameters that didn't exist before the transaction is completed. for audit purpose)
-        // Give value for the transaction
-        // Update the transaction to note that you have given value for the transaction
-        // You can also redirect to your success page from here
+        $transaction = Transaction::where('tx_ref', $data['data']['tx_ref'])->first();
+        // dd($transaction['amount']);
+        if (!empty($data) && $data['status'] == 'success') {
 
+            if ($transaction['amount'] == $data['data']['amount']) {
+
+                 if ($this->getCurrencyById($transaction['currency_id']) == $data['data']['currency']) {
+
+                    return response()->json(['message' => 'Payment successful']);
+                 }else{
+
+                     return response()->json(['message' => 'Payment not successful']);
+                 }
+            }else{
+                return response()->json(['message' => 'Payment not successful']);
+            }
+
+        }
+
+    }
+
+/**
+ * Get the currency id by the type
+ * returned from the transaction
+ */
+    public function getCurrencyByType($type ="")
+    {
+       if(!empty($type)){
+
+            $currency = Currency::where('type', $type)->first();
+            return $currency->id;
+        }
+
+    }
+
+    public function getCurrencyById($id ="")
+    {
+        if(!empty($id)){
+
+            $currency = Currency::where('id', $id)->first();
+            return $currency->type;
+        }
+
+    }
+
+
+    public function index()
+    {
+    return view('pay');
     }
 }
 

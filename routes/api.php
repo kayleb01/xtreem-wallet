@@ -38,7 +38,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('wallet',[WalletController::class, 'index']);
     Route::post('wallet/store', [WalletController::class, 'store'])->name('wallet/store');
 
-
     Route::get('transactions',[TransactionController::class, 'index']);
     Route::get('transaction/{id}', [TransactionController::class, 'show']);
     Route::post('transaction/store', [TransactionController::class, 'store']);
@@ -48,13 +47,14 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('role/store', [RolesController::class, 'store']);
     Route::delete('role/{role}/destroy', [RolesController::class, 'destroy']);
 
-
     // The route that the button calls to initialize payment
     Route::post('/pay', [FlutterwaveController::class, 'initialize'])->name('pay');
     // The callback url after a payment
     Route::get('/rave/callback', [FlutterwaveController::class, 'callback'])->name('callback');
 
-
-
 });
+ // The route that the button calls to initialize payment
+ Route::post('/pay', [FlutterwaveController::class, 'initialize'])->name('pay');
+ // The callback url after a payment
+ Route::get('/rave/callback', [FlutterwaveController::class, 'callback'])->name('callback');
 Route::post('login', [LoginController::class, 'index']);
