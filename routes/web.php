@@ -29,4 +29,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 Route::get('/paypage', [FlutterwaveController::class, 'index']);
-Route::get('type/{type}', [FlutterwaveController::class, 'getCurrencyById']);
+// Route::get('type/{type}', [FlutterwaveController::class, 'getCurrencyById']);

@@ -46,8 +46,6 @@ class FlutterwaveController extends Controller
         }
         //dd($data);
              Transaction::create([
-
-            'payment_type'      =>  $data['payment_options'],
             'currency_id'       => $this->getCurrencyByType($data['currency']),
             'status'            => 0,
             'user_id'           => 1,
@@ -66,19 +64,30 @@ class FlutterwaveController extends Controller
     {
 
         $data = Flutterwave::verifyTransaction(request()->transaction_id);
+        if ($data['status'] == "cancelled") {
 
+                   return response()->json(['errorr' => 'Transaction Cancelled']);
+                }
         $transaction = Transaction::where('tx_ref', $data['data']['tx_ref'])->first();
-        // dd($transaction['amount']);
+
         if (!empty($data) && $data['status'] == 'success') {
 
             if ($transaction['amount'] == $data['data']['amount']) {
 
                  if ($this->getCurrencyById($transaction['currency_id']) == $data['data']['currency']) {
+                     //Update fields we didn't have data for before now
+                        $transaction->update([
+                            'transaction_id' => $data['data']['id'],
+                            'payment_type' => $data['data']['payment_type'],
+                            'device_fingerprint' => $data['data']['device_fingerprint'],
+                            'status' => 1,
+                            'ip' => $data['data']['ip']
+                            ]);
 
                     return response()->json(['message' => 'Payment successful']);
                  }else{
 
-                     return response()->json(['message' => 'Payment not successful']);
+                     return response()->json(['message' => 'Payment not successful, amount doesn\'t match']);
                  }
             }else{
                 return response()->json(['message' => 'Payment not successful']);
