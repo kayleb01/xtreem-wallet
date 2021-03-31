@@ -30,9 +30,8 @@ class AddTransactionRefToTransactionsTable extends Migration
     {
         Schema::table('transactions', function (Blueprint $table) {
             $table->string('tx_ref');
-            $table->string('flw_ref');
-            $table->string('device_fingerprint');
-            $table->ipAddress('ip');
+            $table->string('device_fingerprint')->nullable();
+            $table->ipAddress('ip')->nullable();
         });
     }
 }

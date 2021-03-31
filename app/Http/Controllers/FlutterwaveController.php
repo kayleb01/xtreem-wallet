@@ -44,7 +44,6 @@ class FlutterwaveController extends Controller
             // notify something went wrong
             return response()->json(['error' => 'an unexpected error occured, please try again after some few minutes']);
         }
-        //dd($data);
              Transaction::create([
             'currency_id'       => $this->getCurrencyByType($data['currency']),
             'status'            => 0,
@@ -64,14 +63,15 @@ class FlutterwaveController extends Controller
     {
 
         $data = Flutterwave::verifyTransaction(request()->transaction_id);
+
         if ($data['status'] == "cancelled") {
 
                    return response()->json(['errorr' => 'Transaction Cancelled']);
-                }
-        $transaction = Transaction::where('tx_ref', $data['data']['tx_ref'])->first();
+             }
 
         if (!empty($data) && $data['status'] == 'success') {
 
+            $transaction = Transaction::where('tx_ref', $data['data']['tx_ref'])->first();
             if ($transaction['amount'] == $data['data']['amount']) {
 
                  if ($this->getCurrencyById($transaction['currency_id']) == $data['data']['currency']) {
