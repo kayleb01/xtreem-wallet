@@ -2,21 +2,30 @@ require('./bootstrap');
 
 // Import modules...
 import Vue from 'vue';
-import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-vue';
-import PortalVue from 'portal-vue';
+import VueRouter from 'vue-router';
 
-Vue.mixin({ methods: { route } });
-Vue.use(InertiaPlugin);
-Vue.use(PortalVue);
+const files = require.context('./', true, /\.vue$/i)
+files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-const app = document.getElementById('app');
+import { routes } from './routes';
+Vue.use(VueRouter);
+const router = new VueRouter({
+    mode: 'history',
+    routes
+});
 
-new Vue({
-    render: (h) =>
-        h(InertiaApp, {
-            props: {
-                initialPage: JSON.parse(app.dataset.page),
-                resolveComponent: (name) => require(`./Pages/${name}`).default,
-            },
-        }),
-}).$mount(app);
+const app = new Vue({
+    el: '#app',
+    router,
+
+    data ()	{
+    	return {
+
+    	};
+    },
+
+
+
+
+});
+

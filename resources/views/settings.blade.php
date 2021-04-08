@@ -7,22 +7,22 @@
     <meta name="description" content="">
     <meta name="author" content="Maxartkiller">
 
-    <title>Setting · Fimobile</title>
+    <title>Setting · Settings</title>
+     <!-- Material design icons CSS -->
+     <link rel="stylesheet" href="{{asset('css/material-icons.css')}}">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+     rel="stylesheet">
+     <!-- Roboto fonts CSS -->
+     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
 
-    <!-- Material design icons CSS -->
-    <link rel="stylesheet" href="vendor/materializeicon/material-icons.css">
+     <!-- Bootstrap core CSS -->
+     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
-    <!-- Roboto fonts CSS -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+     <!-- Swiper CSS -->
+     <link href="{{asset('css/swiper.min.css')}}" rel="stylesheet">
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap-4.4.1/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Swiper CSS -->
-    <link href="vendor/swiper/css/swiper.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+     <!-- Custom styles for this template -->
+     <link href="{{asset('css/style.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -30,8 +30,8 @@
     <div class="row no-gutters vh-100 loader-screen">
         <div class="col align-self-center text-white text-center">
             <img src="img/logo.png" alt="logo">
-            <h1 class="mt-3"><span class="font-weight-light ">Fi</span>mobile</h1>
-            <p class="text-mute text-uppercase small">Mobile Template</p>
+            <h1 class="mt-3"><span class="font-weight-light ">Xtreen</span>wallet</h1>
+            <p class="text-mute text-uppercase small">Making payments seamless</p>
             <div class="laoderhorizontal">
                 <div></div>
                 <div></div>
@@ -261,27 +261,20 @@
     <!-- color chooser menu ends -->
 
 
-    <!-- jquery, popper and bootstrap js -->
-    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.4.1/js/bootstrap.min.js"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
     <!-- swiper js -->
-    <script src="vendor/swiper/js/swiper.min.js"></script>
+    <script src="{{asset('js/swiper.min.js')}}"></script>
 
     <!-- cookie js -->
     <script src="vendor/cookie/jquery.cookie.js"></script>
 
-
     <!-- template custom js -->
-    <script src="js/main.js"></script>
+    <script src="{{asset('js/main.js')}}"></script>
 
-    <!-- page level script -->
-    <script>
-        $(window).on('load', function() {
-
-        });
-
+<script>
     </script>
 </body>
 

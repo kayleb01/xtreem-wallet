@@ -7,10 +7,20 @@ use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\AuthenticationException;
 
 class LoginController extends Controller
 {
-   public function index(Request $request)
+
+      /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/';
+
+
+   public function index(Request $request, AuthenticationException $exception)
    {
     $this->validate($request, [
         'email'=> 'required|email',
@@ -18,10 +28,12 @@ class LoginController extends Controller
     ]);
 
     $credentials = request(['email', 'password']);
+
     if (!Auth::attempt($credentials)) {
        return  response([
-                'message' => "These credentials do not match our records"
-                ], 500);
+        'message' => $exception->getMessage(),
+        'errors' => "User credentials do not match our records"
+       ], 500);
     }
 
     $user = User::where('email', $request->email)->first();
@@ -34,5 +46,10 @@ class LoginController extends Controller
                 'message' => 'welcome back, you\'re now logged in'
                 ];
       return response($response, 200);
+   }
+
+   public function show()
+   {
+    return view('login');
    }
 }

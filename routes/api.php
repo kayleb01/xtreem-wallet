@@ -53,8 +53,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/rave/callback', [FlutterwaveController::class, 'callback'])->name('callback');
 
 });
- // The route that the button calls to initialize payment
- Route::post('/pay', [FlutterwaveController::class, 'initialize'])->name('pay');
- // The callback url after a payment
- Route::get('/rave/callback', [FlutterwaveController::class, 'callback'])->name('callback');
+
 Route::post('login', [LoginController::class, 'index']);
+
