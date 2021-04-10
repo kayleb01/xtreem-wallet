@@ -7,7 +7,7 @@
                     <img src="storage/img/logo.png" alt="logo" height="50" width="70" class="m-3">
                     <form class="form-signin mt-3 " @submit.prevent="login()">
                         <div class="form-group">
-                            <input type="email" id="" class="form-control text-center" name="email"  placeholder="Username" v-model="form.email" required autofocus>
+                            <input type="email" id="email" class="form-control text-center" name="email"  placeholder="something@mail.com" v-model="form.email" required autofocus>
                         </div>
 
                         <div class="form-group">
@@ -62,8 +62,8 @@ export default {
                 //requests
                 this.setCookie(token)
 
-                //redirect the user to dashboard
-                redirect.assign('dashboard')
+                //redirect the user to dashboard using view router
+               router.push({path:'dashboard'});
 
             }
 

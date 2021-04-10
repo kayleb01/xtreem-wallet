@@ -1,6 +1,6 @@
-
+import Dashboard from './components/Dashboard.vue';
 
 export const routes = [
-    { path: '/vue', component: Home, name: 'Home' },
-    { path: '/vue/example', component: Example, name: 'Example' }
+    { path: '/dashboard', component: Dashboard, name: 'Dashboard' },
+
 ];
