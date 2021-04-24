@@ -1,23 +1,21 @@
 require('./bootstrap');
 
 // Import modules...
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import { createApp } from 'vue';
 
-const files = require.context('./', true, /\.vue$/i)
-files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+import Login from './components/Login.vue';
+import Dashboard from './components/Dashboard.vue';
 
-import { routes } from './routes';
 
-Vue.use(VueRouter);
+createApp({
+    components:{
+        Login,
+        Dashboard
+    }
+}).mount('#app')
+// const app = Vue({
+//     el: '#app',
+//     router
 
-const router = new VueRouter({
-    mode: 'history',
-    routes
-});
-
-const app = new Vue({
-    el: '#app',
-    router
-});
+// });
 

@@ -1,5 +1,5 @@
-<template name="login">
-    <div class="wrapper container-fluid">
+<template>
+    <div class=" container-fluid">
         <div class="row m-0 p-0">
             <div class="col-lg-4 my-5 col-sm-12 col-xs-12 col-md-8 rounded mx-auto shadow bg-white mt-5 pt-4">
                  <div class="m-3 px-3 text-center">
@@ -45,6 +45,8 @@ export default {
         }
     },
 
+
+
     methods:{
         login(){
             axios.
@@ -63,7 +65,7 @@ export default {
                 this.setCookie(token)
 
                 //redirect the user to dashboard using view router
-               router.push({path:'dashboard'});
+               window.location.assign('/dashboard');
 
             }
 

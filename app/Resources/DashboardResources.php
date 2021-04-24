@@ -20,7 +20,7 @@ class DashboardResources extends JsonResource
             'email' => $this->email,
             'role_id' => $this->role_id,
             'country' => $this->country,
-            'profile_photo_url' => $this->profile_photo_url
+
         ];
     }
 }
