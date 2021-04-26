@@ -45,7 +45,11 @@ export default {
         }
     },
 
-
+    created(){
+         if(document.cookie.split(';').some((item) => item.trim().startsWith('key='))){
+             window.location.assign('/dashboard')
+      }
+    },
 
     methods:{
         login(){

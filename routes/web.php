@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +20,4 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/login', [LoginController::class, 'show']);
 Route::get('/dashboard', [DashboardController::class, 'show']);
-
-//login
+Route::get('/register', [RegisterController::class, 'index']);

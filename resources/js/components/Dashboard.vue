@@ -2,7 +2,7 @@
     <div>
       <div class="row no-gutters vh-100 loader-screen">
     <div class="col align-self-center text-white text-center">
-        <img src="img/logo.png" alt="logo">
+        <!--    <img src="img/logo.png" alt="logo"> -->
         <h1 class="mt-3"><span class="font-weight-light ">Xtreem</span>Wallet</h1>
         <p class="text-mute text-uppercase small">Making payments seamless</p>
         <div class="laoderhorizontal">
@@ -17,7 +17,7 @@
     <div class="mt-4 mb-3">
         <div class="row">
             <div class="col-auto">
-                <figure class="avatar avatar-60 border-0"><img src="img/user1.png" alt=""></figure>
+                <!-- <figure class="avatar avatar-60 border-0"><img src="img/user1.png" alt=""></figure> -->
             </div>
             <div class="col pl-0 align-self-center">
                 <h5 class="mb-1">Ammy Jahnson</h5>
@@ -86,7 +86,7 @@
                 <div class="row">
                     <div class="col">
                         <p class="text-normal">My Balance</p>
-                        <h3 class="mb-0 font-weight-normal mb-3">$00.00</h3>
+                        <h3 class="mb-0 font-weight-normal mb-3">$00.00 {{wallet}}</h3>
                         <hr>
                         <h3 class="mb-0 font-weight-normal">₦00.00</h3>
                     </div>
@@ -95,6 +95,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="card-footer bg-none">
                 <div class="row">
                     <div class="col">
@@ -103,6 +105,9 @@
                     <div class="col text-center">
                         <p> <i class="material-icons text-success vm small">arrow_upward</i><br><small class="text-mute">USD</small></p>
                     </div>
+                    <div v-for="(balance, index) in wallet.data" :key="index">
+                   {{balance}}
+               </div>
                     <div class="col text-right">
                         <p><i class="material-icons text-success vm small mr-1">arrow_upward</i><br><small class="text-mute">GBP</small></p>
                     </div>
@@ -122,7 +127,7 @@
                             <div class="h-140 bg-white p-3 m-3 ml-2 text-center">
                                 <h2 class="font-weight-bold">0</h2>
                                 <span class=" "><h6>Transactions</h6> </span>
-                                <span class="small font-weight-bold">{{date('M, Y')}}</span>
+                                <span class="small font-weight-bold"></span>
                             </div>
                         </div>
                 </div>
@@ -174,7 +179,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-auto pr-0">
-                                            <img src="img/graphics-carousel-scheme1.png" alt="" class="mw-100">
+                                            <!-- <img src="img/graphics-carousel-scheme1.png" alt="" class="mw-100"> -->
                                         </div>
                                         <div class="col align-self-center">
                                             <h5 class="mb-2 font-weight-normal">Gold loan scheme</h5>
@@ -194,7 +199,7 @@
                                             <p class="text-mute">Get all money at market rate of gold</p>
                                         </div>
                                         <div class="col-auto">
-                                            <img src="img/graphics-carousel-scheme1.png" alt="" class="mw-100">
+                                            <!-- <img src="img/graphics-carousel-scheme1.png" alt="" class="mw-100"> -->
                                         </div>
                                     </div>
                                 </div>
@@ -304,7 +309,7 @@
                 </button>
             </div>
             <div class="modal-body text-center pt-0">
-                <img src="img/infomarmation-graphics2.png" alt="logo" class="logo-small">
+                <!-- <img src="img/infomarmation-graphics2.png" alt="logo" class="logo-small"> -->
                 <div class="form-group mt-4">
                     <input type="text" class="form-control form-control-lg text-center" placeholder="Enter amount" required="" autofocus="">
                 </div>
@@ -340,7 +345,7 @@
                         <div class="row align-items-center">
                             <div class="col-auto pr-0">
                                 <div class="avatar avatar-60 no-shadow border-0">
-                                    <img src="img/user2.png" alt="">
+                                    <!-- <img src="img/user2.png" alt=""> -->
                                 </div>
                             </div>
                             <div class="col">
@@ -394,7 +399,7 @@
                         <div class="row align-items-center">
                             <div class="col-auto pr-0">
                                 <div class="avatar avatar-60 no-shadow border-0">
-                                    <img src="img/user2.png" alt="">
+                                    <!-- <img src="img/user2.png" alt=""> -->
                                 </div>
                             </div>
                             <div class="col align-self-center">
@@ -459,6 +464,7 @@
             </div>
             <div class="modal-footer border-0">
                 <button type="button" class="btn btn-default btn-lg btn-rounded shadow btn-block close"  data-dismiss="modal">Next</button>
+
             </div>
         </div>
     </div>
@@ -469,8 +475,60 @@
 export default {
     data() {
         return {
-
+            token:'',
+            transactions: '',
+            wallet: ''
         }
     },
+
+    created(){
+        if(!document.cookie.split(';').some((item) => item.trim().startsWith('key='))){
+                    window.location.assign('/login')
+            }
+
+    },
+
+    mounted(){
+        if(document.cookie.split(';').some((item) => item.trim().startsWith('key='))){
+            let authCookie = document.cookie.split(';')
+            for (let i = 0; i < authCookie.length; i++) {
+                const cc = authCookie[i].split("=");
+                if ('key' == cc[0].trim()) {
+                    this.token  = decodeURIComponent(cc[1])
+
+                }
+
+            }
+        }
+
+    //load the transaction history
+    this.fetch_transactions()
+    this.fetch_wallet()
+
+    },
+    methods: {
+        fetch_transactions(){
+            axios.get('api/transactions',{
+                headers:{
+                        'contentType':'application/json',
+                        'accept':'application/json',
+                        'Authorization':'Bearer '+this.token
+                    }
+            })
+            .then((data) => this.transactions = data.data)
+            .catch(err => console.log(err))
+        },
+        fetch_wallet(){
+            axios.get('api/wallet',{
+                headers:{
+                        'contentType':'application/json',
+                        'accept':'application/json',
+                        'Authorization':'Bearer '+this.token
+                    }
+            })
+            .then((data) => this.wallet = console.log(data.data))
+            .catch(err => console.log(err))
+        }
+    }
 }
 </script>

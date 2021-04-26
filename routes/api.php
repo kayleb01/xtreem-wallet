@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('currency/{currency}/edit', [CurrencyController::class, 'update']);
     Route::delete('currency/{currency}/destroy', [CurrencyController::class, 'destroy']);
 
-    Route::get('wallet',[WalletController::class, 'index']);
+    Route::get('/wallet',[WalletController::class, 'index']);
     Route::post('wallet/store', [WalletController::class, 'store'])->name('wallet/store');
 
     Route::get('transactions',[TransactionController::class, 'index']);
