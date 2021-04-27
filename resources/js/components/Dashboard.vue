@@ -84,11 +84,14 @@
             <div class="card mb-4 shadow">
             <div class="card-body border-bottom">
                 <div class="row">
-                    <div class="col">
+                      <div >
+
+               </div>
+                    <div class="col" v-for="(balance, index) in wallet.data" :key="index">
                         <p class="text-normal">My Balance</p>
-                        <h3 class="mb-0 font-weight-normal mb-3">$00.00 {{wallet}}</h3>
+                        <h3 class="mb-0 font-weight-normal mb-3" v-if="balance.currency.type == 'NGN'"> ₦{{balance.balance}} </h3>
                         <hr>
-                        <h3 class="mb-0 font-weight-normal">₦00.00</h3>
+                        <h3 class="mb-0 font-weight-normal" v-if="balance.currency.type == 'USD'">${{balance.balance}}</h3>
                     </div>
                     <div class="col-auto">
                         <button class="btn btn-default btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"><i class="material-icons">add</i></button>
@@ -96,7 +99,7 @@
                 </div>
             </div>
 
-
+        {{transactions}}
             <div class="card-footer bg-none">
                 <div class="row">
                     <div class="col">
@@ -105,9 +108,6 @@
                     <div class="col text-center">
                         <p> <i class="material-icons text-success vm small">arrow_upward</i><br><small class="text-mute">USD</small></p>
                     </div>
-                    <div v-for="(balance, index) in wallet.data" :key="index">
-                   {{balance}}
-               </div>
                     <div class="col text-right">
                         <p><i class="material-icons text-success vm small mr-1">arrow_upward</i><br><small class="text-mute">GBP</small></p>
                     </div>
@@ -526,7 +526,7 @@ export default {
                         'Authorization':'Bearer '+this.token
                     }
             })
-            .then((data) => this.wallet = console.log(data.data))
+            .then((data) => this.wallet = (data.data))
             .catch(err => console.log(err))
         }
     }
