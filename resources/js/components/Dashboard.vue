@@ -43,24 +43,24 @@
 <div class="wrapper homepage">
     <!-- header -->
     <div class="header">
-        <nav class="navbar navbar-expand-lg navbar-dark ">
-            <a class="navbar-brand text-custom menu-btn">Navbar</a>
+        <nav class="navbar navbar-expand-lg navbar-dark d-flex justify-center ">
+            <a class="navbar-brand text-custom menu-btn" style="color:#036 !important">XTREEM WALLET</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon bg-primary rounded"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <!-- <li class="nav-item active">
                     <a class="nav-link text-custom" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-custom" href="#">Link</a>
-                </li>
-                <li class="nav-item float-right"><a href="notification.html" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">9+</span></a></li>
+
+                </li> -->
+                <li class="nav-item float-right"><a href="#" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">9+</span></a></li>
                 </ul>
             </div>
-            </nav>
+        </nav>
             </div>
     <!-- header ends -->
 
@@ -92,14 +92,13 @@
                         <h3 class="mb-0 font-weight-normal mb-3" v-if="balance.currency.type == 'NGN'"> ₦{{balance.balance}} </h3>
                         <hr>
                         <h3 class="mb-0 font-weight-normal" v-if="balance.currency.type == 'USD'">${{balance.balance}}</h3>
+                        <h6 v-else>Upgrage to have balance in other currencies</h6>
                     </div>
                     <div class="col-auto">
                         <button class="btn btn-default btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"><i class="material-icons">add</i></button>
                     </div>
                 </div>
             </div>
-
-        {{transactions}}
             <div class="card-footer bg-none">
                 <div class="row">
                     <div class="col">
@@ -301,19 +300,26 @@
 </div>
 <!-- Modal -->
 <div class="modal fade" id="addmoney" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header border-0">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
+                <h5 class="modal-title">Fund Wallet</h5>
             </div>
-            <div class="modal-body text-center pt-0">
-                <!-- <img src="img/infomarmation-graphics2.png" alt="logo" class="logo-small"> -->
-                <div class="form-group mt-4">
-                    <input type="text" class="form-control form-control-lg text-center" placeholder="Enter amount" required="" autofocus="">
+            <div class="modal-body pt-0">
+                 <div class="form-group mt-4">
+                     <label for="payment_method"> Payment method</label>
+                    <select class="form-control form-control-lg" name="payment_method" required>
+                        <option value="card">card</option>
+                        <option value="ussd">USSD</option>
+                    </select>
                 </div>
-                <p class="text-mute">You will be redirected to payment gatway to procceed further. Enter amount in USD.</p>
+                <div class="form-group mt-4">
+                    <input type="text" class="form-control form-control-lg text-center" placeholder="Enter amount" required="" autofocus>
+                </div>
+                <p class="text-mute">You will be redirected to payment gateway to procceed further.</p>
             </div>
             <div class="modal-footer border-0">
                 <button type="button" class="btn btn-default btn-lg btn-rounded shadow btn-block close" data-dismiss="modal">Next</button>

@@ -16748,7 +16748,7 @@ var _hoisted_4 = {
   "class": "wrapper homepage"
 };
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"header\"><nav class=\"navbar navbar-expand-lg navbar-dark \"><a class=\"navbar-brand text-custom menu-btn\">Navbar</a><button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"><span class=\"navbar-toggler-icon bg-primary rounded\"></span></button><div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\"><ul class=\"navbar-nav mr-auto\"><li class=\"nav-item active\"><a class=\"nav-link text-custom\" href=\"#\">Home <span class=\"sr-only\">(current)</span></a></li><li class=\"nav-item\"><a class=\"nav-link text-custom\" href=\"#\">Link</a></li><li class=\"nav-item float-right\"><a href=\"notification.html\" class=\"btn  btn-link text-dark position-relative\"><i class=\"material-icons\">notifications_none</i><span class=\"counts\">9+</span></a></li></ul></div></nav></div>", 1);
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"header\"><nav class=\"navbar navbar-expand-lg navbar-dark d-flex justify-center \"><a class=\"navbar-brand text-custom menu-btn\" style=\"color:#036 !important;\">XTREEM WALLET</a><button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"><span class=\"navbar-toggler-icon bg-primary rounded\"></span></button><div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\"><ul class=\"navbar-nav mr-auto\"><!-- &lt;li class=&quot;nav-item active&quot;&gt;\n                    &lt;a class=&quot;nav-link text-custom&quot; href=&quot;#&quot;&gt;Home &lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;\n                &lt;/li&gt;\n                &lt;li class=&quot;nav-item&quot;&gt;\n\n                &lt;/li&gt; --><li class=\"nav-item float-right\"><a href=\"#\" class=\"btn  btn-link text-dark position-relative\"><i class=\"material-icons\">notifications_none</i><span class=\"counts\">9+</span></a></li></ul></div></nav></div>", 1);
 
 var _hoisted_6 = {
   "class": "container-fluid mb-3"
@@ -16801,8 +16801,11 @@ var _hoisted_17 = {
   key: 1,
   "class": "mb-0 font-weight-normal"
 };
+var _hoisted_18 = {
+  key: 2
+};
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "col-auto"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
   "class": "btn btn-default btn-rounded-54 shadow",
@@ -16814,22 +16817,22 @@ var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card-footer bg-none\"><div class=\"row\"><div class=\"col\"><p><i class=\"material-icons text-danger vm small\">arrow_downward</i><br><small class=\"text-mute\">INR</small></p></div><div class=\"col text-center\"><p><i class=\"material-icons text-success vm small\">arrow_upward</i><br><small class=\"text-mute\">USD</small></p></div><div class=\"col text-right\"><p><i class=\"material-icons text-success vm small mr-1\">arrow_upward</i><br><small class=\"text-mute\">GBP</small></p></div></div></div>", 1);
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card-footer bg-none\"><div class=\"row\"><div class=\"col\"><p><i class=\"material-icons text-danger vm small\">arrow_downward</i><br><small class=\"text-mute\">INR</small></p></div><div class=\"col text-center\"><p><i class=\"material-icons text-success vm small\">arrow_upward</i><br><small class=\"text-mute\">USD</small></p></div><div class=\"col text-right\"><p><i class=\"material-icons text-success vm small mr-1\">arrow_upward</i><br><small class=\"text-mute\">GBP</small></p></div></div></div>", 1);
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-lg-6 col-sm-12 col-md-6 col-xs-12\"><div class=\"card shadow\"><div class=\"card-body\"><h5 class=\"card-title\"><span class=\"material-icons\"> history</span> Transaction History</h5><div class=\"d-flex justify-content-around\"><div class=\"h-100 bg-white p-3 m-3 text-center\"><span class=\"material-icons md-48\"> trending_up</span><br><br><h5>Check Status</h5></div><div class=\"h-140 bg-white p-3 m-3 ml-2 text-center\"><h2 class=\"font-weight-bold\">0</h2><span class=\" \"><h6>Transactions</h6></span><span class=\"small font-weight-bold\"></span></div></div></div></div></div>", 1);
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-lg-6 col-sm-12 col-md-6 col-xs-12\"><div class=\"card shadow\"><div class=\"card-body\"><h5 class=\"card-title\"><span class=\"material-icons\"> history</span> Transaction History</h5><div class=\"d-flex justify-content-around\"><div class=\"h-100 bg-white p-3 m-3 text-center\"><span class=\"material-icons md-48\"> trending_up</span><br><br><h5>Check Status</h5></div><div class=\"h-140 bg-white p-3 m-3 ml-2 text-center\"><h2 class=\"font-weight-bold\">0</h2><span class=\" \"><h6>Transactions</h6></span><span class=\"small font-weight-bold\"></span></div></div></div></div></div>", 1);
 
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"container\"><div class=\"row\"><div class=\"swiper-container icon-slide top mb-4\"><div class=\"swiper-wrapper\"><a href=\"\" class=\"swiper-slide text-center\" data-toggle=\"modal\" data-target=\"#paymodal\"><div class=\"avatar avatar-60 no-shadow border-0\"><div class=\"overlay bg-template\"></div><i class=\"material-icons text-template\">local_atm</i></div><p class=\"small mt-2\">Transfer</p></a><a href=\"\" class=\"swiper-slide text-center\" data-toggle=\"modal\" data-target=\"#sendmoney\"><div class=\"avatar avatar-60 no-shadow border-0\"><div class=\"overlay bg-template\"></div><i class=\"material-icons text-template\">phone</i></div><p class=\"small mt-2\"> Buy Airtime</p></a><a href=\"\" class=\"swiper-slide text-center\"><div class=\"avatar avatar-60 no-shadow border-0\"><div class=\"overlay bg-template\"></div><i class=\"material-icons text-template\">assignment</i></div><p class=\"small mt-2\">Bills</p></a></div><div class=\"swiper-pagination\"></div></div></div><div class=\"row\"><div class=\"container px-0\"><!-- Swiper --><div class=\"swiper-container offer-slide\"><div class=\"swiper-wrapper\"><div class=\"swiper-slide\"><div class=\"card shadow border-0 bg-template\"><div class=\"card-body\"><div class=\"row\"><div class=\"col-auto pr-0\"><!-- &lt;img src=&quot;img/graphics-carousel-scheme1.png&quot; alt=&quot;&quot; class=&quot;mw-100&quot;&gt; --></div><div class=\"col align-self-center\"><h5 class=\"mb-2 font-weight-normal\">Gold loan scheme</h5><p class=\"text-mute\">Get all money at market rate of gold</p></div></div></div></div></div><div class=\"swiper-slide\"><div class=\"card shadow border-0 bg-template\"><div class=\"card-body\"><div class=\"row\"><div class=\"col pr-0 align-self-center\"><h5 class=\"mb-2 font-weight-normal\">Gold loan scheme</h5><p class=\"text-mute\">Get all money at market rate of gold</p></div><div class=\"col-auto\"><!-- &lt;img src=&quot;img/graphics-carousel-scheme1.png&quot; alt=&quot;&quot; class=&quot;mw-100&quot;&gt; --></div></div></div></div></div></div></div></div></div></div><div class=\"container mt-4\"><div style=\"display:inline;\"><span class=\"subtitle\">Transactions</span><span class=\"float-right\"><a href=\"#\">view all</a></span></div><div class=\"card shadow border-0 mb-3\" style=\"display:block;\"><div class=\"card-body\"><div class=\"row align-items-center\"><div class=\"col-auto pr-0\"><div class=\"avatar avatar-50 no-shadow border-0\"><div class=\"overlay bg-template\"></div><i class=\"material-icons vm text-template\">local_atm</i></div></div><div class=\"col-auto align-self-center\"><h6 class=\"font-weight-normal mb-1\">Airtime</h6><p class=\"text-mute small text-secondary\">MTN</p></div><div class=\"col-auto align-self-center border-left\"><h6 class=\"font-weight-normal mb-1\">₦ 00.00</h6><p class=\"text-mute small text-secondary\">Date: 15-12-2019</p></div></div></div></div><div class=\"card shadow border-0 mb-3\"><div class=\"card-body\"><div class=\"row align-items-center\"><div class=\"col-auto pr-0\"><div class=\"avatar avatar-50 no-shadow border-0\"><div class=\"overlay bg-template\"></div><i class=\"material-icons vm text-template\">local_atm</i></div></div><div class=\"col-auto align-self-center\"><h6 class=\"font-weight-normal mb-1\">Transfered</h6><p class=\"text-mute small text-secondary\">Solomon Scales</p></div><div class=\"col-auto align-self-center border-left\"><h6 class=\"font-weight-normal mb-1\">$ 658.00</h6><p class=\"text-mute small text-secondary\">Date: 18-12-2019</p></div></div></div></div></div>", 2);
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"container\"><div class=\"row\"><div class=\"swiper-container icon-slide top mb-4\"><div class=\"swiper-wrapper\"><a href=\"\" class=\"swiper-slide text-center\" data-toggle=\"modal\" data-target=\"#paymodal\"><div class=\"avatar avatar-60 no-shadow border-0\"><div class=\"overlay bg-template\"></div><i class=\"material-icons text-template\">local_atm</i></div><p class=\"small mt-2\">Transfer</p></a><a href=\"\" class=\"swiper-slide text-center\" data-toggle=\"modal\" data-target=\"#sendmoney\"><div class=\"avatar avatar-60 no-shadow border-0\"><div class=\"overlay bg-template\"></div><i class=\"material-icons text-template\">phone</i></div><p class=\"small mt-2\"> Buy Airtime</p></a><a href=\"\" class=\"swiper-slide text-center\"><div class=\"avatar avatar-60 no-shadow border-0\"><div class=\"overlay bg-template\"></div><i class=\"material-icons text-template\">assignment</i></div><p class=\"small mt-2\">Bills</p></a></div><div class=\"swiper-pagination\"></div></div></div><div class=\"row\"><div class=\"container px-0\"><!-- Swiper --><div class=\"swiper-container offer-slide\"><div class=\"swiper-wrapper\"><div class=\"swiper-slide\"><div class=\"card shadow border-0 bg-template\"><div class=\"card-body\"><div class=\"row\"><div class=\"col-auto pr-0\"><!-- &lt;img src=&quot;img/graphics-carousel-scheme1.png&quot; alt=&quot;&quot; class=&quot;mw-100&quot;&gt; --></div><div class=\"col align-self-center\"><h5 class=\"mb-2 font-weight-normal\">Gold loan scheme</h5><p class=\"text-mute\">Get all money at market rate of gold</p></div></div></div></div></div><div class=\"swiper-slide\"><div class=\"card shadow border-0 bg-template\"><div class=\"card-body\"><div class=\"row\"><div class=\"col pr-0 align-self-center\"><h5 class=\"mb-2 font-weight-normal\">Gold loan scheme</h5><p class=\"text-mute\">Get all money at market rate of gold</p></div><div class=\"col-auto\"><!-- &lt;img src=&quot;img/graphics-carousel-scheme1.png&quot; alt=&quot;&quot; class=&quot;mw-100&quot;&gt; --></div></div></div></div></div></div></div></div></div></div><div class=\"container mt-4\"><div style=\"display:inline;\"><span class=\"subtitle\">Transactions</span><span class=\"float-right\"><a href=\"#\">view all</a></span></div><div class=\"card shadow border-0 mb-3\" style=\"display:block;\"><div class=\"card-body\"><div class=\"row align-items-center\"><div class=\"col-auto pr-0\"><div class=\"avatar avatar-50 no-shadow border-0\"><div class=\"overlay bg-template\"></div><i class=\"material-icons vm text-template\">local_atm</i></div></div><div class=\"col-auto align-self-center\"><h6 class=\"font-weight-normal mb-1\">Airtime</h6><p class=\"text-mute small text-secondary\">MTN</p></div><div class=\"col-auto align-self-center border-left\"><h6 class=\"font-weight-normal mb-1\">₦ 00.00</h6><p class=\"text-mute small text-secondary\">Date: 15-12-2019</p></div></div></div></div><div class=\"card shadow border-0 mb-3\"><div class=\"card-body\"><div class=\"row align-items-center\"><div class=\"col-auto pr-0\"><div class=\"avatar avatar-50 no-shadow border-0\"><div class=\"overlay bg-template\"></div><i class=\"material-icons vm text-template\">local_atm</i></div></div><div class=\"col-auto align-self-center\"><h6 class=\"font-weight-normal mb-1\">Transfered</h6><p class=\"text-mute small text-secondary\">Solomon Scales</p></div><div class=\"col-auto align-self-center border-left\"><h6 class=\"font-weight-normal mb-1\">$ 658.00</h6><p class=\"text-mute small text-secondary\">Date: 18-12-2019</p></div></div></div></div></div>", 2);
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"footer\"><div class=\"no-gutters\"><div class=\"col-auto mx-auto\"><div class=\"row no-gutters justify-content-center\"><div class=\"col-auto\"><a href=\"index.html\" class=\"btn btn-link-default active\"><i class=\"material-icons\">home</i></a></div><div class=\"col-auto\"><a href=\"statistics.html\" class=\"btn btn-link-default\"><i class=\"material-icons\">insert_chart_outline</i></a></div><div class=\"col-auto\"><a href=\"wallet.html\" class=\"btn btn-link-default\"><i class=\"material-icons\">account_balance_wallet</i></a></div><div class=\"col-auto\"><a href=\"transactions.html\" class=\"btn btn-link-default\"><i class=\"material-icons\">widgets</i></a></div><div class=\"col-auto\"><a href=\"profile.html\" class=\"btn btn-link-default\"><i class=\"material-icons\">account_circle</i></a></div></div></div></div></div>", 1);
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"footer\"><div class=\"no-gutters\"><div class=\"col-auto mx-auto\"><div class=\"row no-gutters justify-content-center\"><div class=\"col-auto\"><a href=\"index.html\" class=\"btn btn-link-default active\"><i class=\"material-icons\">home</i></a></div><div class=\"col-auto\"><a href=\"statistics.html\" class=\"btn btn-link-default\"><i class=\"material-icons\">insert_chart_outline</i></a></div><div class=\"col-auto\"><a href=\"wallet.html\" class=\"btn btn-link-default\"><i class=\"material-icons\">account_balance_wallet</i></a></div><div class=\"col-auto\"><a href=\"transactions.html\" class=\"btn btn-link-default\"><i class=\"material-icons\">widgets</i></a></div><div class=\"col-auto\"><a href=\"profile.html\" class=\"btn btn-link-default\"><i class=\"material-icons\">account_circle</i></a></div></div></div></div></div>", 1);
 
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "modal fade",
   id: "addmoney",
   tabindex: "-1",
   role: "dialog",
   "aria-hidden": "true"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "modal-dialog modal-sm modal-dialog-centered",
+  "class": "modal-dialog modal-lg modal-dialog-centered",
   role: "document"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "modal-content"
@@ -16842,9 +16845,23 @@ var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
   "aria-label": "Close"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "aria-hidden": "true"
-}, "×")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "modal-body text-center pt-0"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <img src=\"img/infomarmation-graphics2.png\" alt=\"logo\" class=\"logo-small\"> "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+}, "×")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h5", {
+  "class": "modal-title"
+}, "Fund Wallet")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "modal-body pt-0"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "form-group mt-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "for": "payment_method"
+}, " Payment method"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+  "class": "form-control form-control-lg",
+  name: "payment_method",
+  required: ""
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "card"
+}, "card"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "ussd"
+}, "USSD")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "form-group mt-4"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
   type: "text",
@@ -16854,7 +16871,7 @@ var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
   autofocus: ""
 })]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
   "class": "text-mute"
-}, "You will be redirected to payment gatway to procceed further. Enter amount in USD.")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+}, "You will be redirected to payment gateway to procceed further.")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "modal-footer border-0"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
   type: "button",
@@ -16864,7 +16881,7 @@ var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "modal fade",
   id: "sendmoney",
   tabindex: "-1",
@@ -16928,7 +16945,7 @@ var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "modal fade",
   id: "paymodal",
   tabindex: "-1",
@@ -17013,7 +17030,7 @@ var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "modal fade",
   id: "bookmodal",
   tabindex: "-1",
@@ -17109,12 +17126,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_16, balance.currency.type == 'USD' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("h3", _hoisted_17, "$" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(balance.balance), 1
     /* TEXT */
-    )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+    )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("h6", _hoisted_18, "Upgrage to have balance in other currencies"))]);
   }), 128
   /* KEYED_FRAGMENT */
-  )), _hoisted_18])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.transactions) + " ", 1
-  /* TEXT */
-  ), _hoisted_19])]), _hoisted_20])]), _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" footer"), _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" footer ends")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), _hoisted_27]);
+  )), _hoisted_19])]), _hoisted_20])]), _hoisted_21])]), _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" footer"), _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" footer ends")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), _hoisted_28]);
 }
 
 /***/ }),
