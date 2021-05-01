@@ -66,7 +66,7 @@ class FlutterwaveController extends Controller
 
         if ($data['status'] == "cancelled") {
 
-                   return response()->json(['errorr' => 'Transaction Cancelled']);
+                   return response()->json(['errorr' => 'Transaction Cancelled'], 500);
              }
 
         if (!empty($data) && $data['status'] == 'success') {

@@ -11,7 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').vue()
+mix.js('resources/js/app.js', 'public/js').vue('3.0.5')
     .webpackConfig(require('./webpack.config'));
 
 if (mix.inProduction()) {

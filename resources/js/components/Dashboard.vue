@@ -210,7 +210,6 @@
             </div>
         </div>
     </div>
-
     <div class="container mt-4">
         <div style="display: inline">
             <span class="subtitle">Transactions</span>
@@ -301,28 +300,27 @@
 <!-- Modal -->
 <div class="modal fade" id="addmoney" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header border-0">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div class="modal-content mx-auto col-lg-6">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">Fund Wallet</h5>
+                <button type="button" class="close float-right" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title">Fund Wallet</h5>
             </div>
             <div class="modal-body pt-0">
-                 <div class="form-group mt-4">
-                     <label for="payment_method"> Payment method</label>
-                    <select class="form-control form-control-lg" name="payment_method" required>
-                        <option value="card">card</option>
-                        <option value="ussd">USSD</option>
-                    </select>
-                </div>
-                <div class="form-group mt-4">
-                    <input type="text" class="form-control form-control-lg text-center" placeholder="Enter amount" required="" autofocus>
-                </div>
-                <p class="text-mute">You will be redirected to payment gateway to procceed further.</p>
-            </div>
-            <div class="modal-footer border-0">
-                <button type="button" class="btn btn-default btn-lg btn-rounded shadow btn-block close" data-dismiss="modal">Next</button>
+                <form @submit.prevent="addWalletBalance()">
+                    <div class="form-group mt-4">
+                        <div class="form-group mt-4">
+                            <input type="text" name="amount" class="form-control form-control-lg text-center" placeholder="Enter amount" v-model="form.amount" required autofocus>
+                        </div>
+                        <p class="text-mute">You will be redirected to payment gateway to procceed further.</p>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="submit" class="btn btn-default p-2 btn-rounded shadow btn-block close">Pay</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -427,70 +425,63 @@
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="bookmodal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header border-0">
-                <h5>Pay</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body pt-0">
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline12" name="customRadioInline12" class="custom-control-input">
-                    <label class="custom-control-label" for="customRadioInline12">Flight</label>
-                </div>
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline22" name="customRadioInline12" class="custom-control-input" checked>
-                    <label class="custom-control-label" for="customRadioInline22">Train</label>
-                </div>
-                <h6 class="subtitle">Select Location</h6>
-                <div class="form-group mt-4">
-                    <input type="text" class="form-control text-center" placeholder="Select start point" required="" autofocus="">
-                </div>
-                <div class="form-group mt-4">
-                    <input type="text" class="form-control text-center" placeholder="Select end point" required="">
-                </div>
-                <h6 class="subtitle">Select Date</h6>
-                <div class="form-group mt-4">
-                    <input type="date" class="form-control text-center" placeholder="Select end point" required="">
-                </div>
-                <h6 class="subtitle">number of passangers</h6>
-                <div class="form-group mt-4">
-                    <select class="form-control  text-center">
-                        <option>1</option>
-                        <option selected>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                    </select>
-                </div>
-            </div>
-            <div class="modal-footer border-0">
-                <button type="button" class="btn btn-default btn-lg btn-rounded shadow btn-block close"  data-dismiss="modal">Next</button>
-
-            </div>
-        </div>
-    </div>
-</div>
     </div>
 </template>
 <script>
 export default {
+     props: {
+            isProduction: {
+              type: Boolean,
+              required: false,
+              default: false //set to true if you are going live
+            },
+             callback: {
+              type: Function,
+              required: true,
+              default: () => {
+                console.log('Payment made, verify payment');
+              }
+            },
+            close: {
+              type: Function,
+              required: true,
+              default: () => {}
+            },
+          },
+
     data() {
         return {
             token:'',
             transactions: '',
-            wallet: ''
+            wallet: '',
+            public_key:'FLWPUBK_TEST-db5bc2dc21efad5023ae7b13aa04cd2e-X',
+            payment_method:'card',
+            custom_title:"fund wallet",
+            custom_logo:'/storage/img/logo/png',
+            form:{
+                amount:''
+            }
         }
     },
-
+    computed: {
+  reference() {
+    let text = "";
+    let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (let i = 0; i < 10; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+    return text;
+  }
+},
     created(){
         if(!document.cookie.split(';').some((item) => item.trim().startsWith('key='))){
                     window.location.assign('/login')
             }
+
+         const script = document.createElement("script");
+            script.src = !this.isProduction
+              ? "https://ravemodal-dev.herokuapp.com/v3.js"
+              : "https://checkout.flutterwave.com/v3.js";
+            document.getElementsByTagName("head")[0].appendChild(script);
 
     },
 
@@ -505,8 +496,10 @@ export default {
                 }
 
             }
-        }
 
+    }
+
+    document.cookie ="SameSite=Lax";
     //load the transaction history
     this.fetch_transactions()
     this.fetch_wallet()
@@ -527,13 +520,50 @@ export default {
         fetch_wallet(){
             axios.get('api/wallet',{
                 headers:{
-                        'contentType':'application/json',
-                        'accept':'application/json',
-                        'Authorization':'Bearer '+this.token
+                    'contentType':'application/json',
+                    'accept':'application/json',
+                    'Authorization':'Bearer '+this.token
                     }
             })
             .then((data) => this.wallet = (data.data))
             .catch(err => console.log(err))
+        },
+        addWalletBalance(){
+
+            // window.FlutterwaveCheckout({
+            //         public_key: this.public_key,
+            //         tx_ref: this.reference,
+            //         amount: this.form.amount,
+            //         currency: "NGN",
+            //         payment_options: this.payment_method,
+            //         customer: {
+            //         name: this.wallet.user.name,
+            //         email: this.wallet.user.email,
+            //         },
+            //         callback: response => this.callback(response),
+            //         customizations: {
+            //         title: this.custom_title,
+            //         description: "Payment for items in cart",
+            //         logo: this.custom_logo,
+            //         },
+            //     });
+
+
+            axios.post('/api/pay', this.form ,{
+
+                headers:{
+                    'contentType':'application/json',
+                    'accept':'application/json',
+                    'Authorization':'Bearer '+this.token
+                        }
+                    }
+            )
+            // .then((response) => {
+            //     console.log(response)
+            // })
+            // .catch((error) => {
+            //     console.log(error)
+            // })
         }
     }
 }

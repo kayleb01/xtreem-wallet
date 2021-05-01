@@ -14,7 +14,7 @@ class TransactionController extends Controller
             $transactions = Transaction::with('user')->paginate(20);
             return TransactionResource::collection($transactions);
         }
-        $transactions = Transaction::where('user_id', auth()->id())->paginate(20);
+        $transactions = Transaction::where('user_id', auth()->id())->take(5)->get();
         return TransactionResource::collection($transactions);
 
     }
@@ -44,6 +44,7 @@ class TransactionController extends Controller
     {
         $this->isAdmin();
 
+        $this->validateRequest($request);
         $query = $transaction->update($request->all());
         if ($query) {
             # Return response if  updated successfully...

@@ -24,21 +24,25 @@
         {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
 
         <!-- Scripts -->
-
+        <script>
+            window.App = {!! json_encode([
+                'user' => auth()->user(),
+                'signedIn' => Auth::check()
+            ]) !!};
+        </script>
         {{-- <script src="{{ mix('js/app.js') }}" defer></script> --}}
     </head>
     <body >
         <div id="app">
-            {{-- <router-view></router-view> --}}
             @yield('content')
 
         </div>
     </body>
+
+    <script src="{{mix('js/app.js')}}"></script>
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/popper.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
- <!-- vue compiled js -->
-    <script src="{{asset('js/app.js')}}"></script>
 
     <!-- swiper js -->
     <script src="{{asset('js/swiper.min.js')}}"></script>

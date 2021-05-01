@@ -13,7 +13,7 @@ createApp({
         Dashboard,
         Register
     }
-}).mount('#app')
+}).mount('#app');
 // const app = Vue({
 //     el: '#app',
 //     router

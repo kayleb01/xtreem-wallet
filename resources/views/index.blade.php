@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <dashboard />
+    <Dashboard :isProduction="false" :callback="callback" :close="close"></Dashboard>
 @endsection
 
 

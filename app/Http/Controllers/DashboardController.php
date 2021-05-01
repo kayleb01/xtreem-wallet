@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\Dashboard;
-use App\Http\Resources\DashboardResources;
-use App\Http\Resources\UserResources;
-use App\Models\Transaction;
+
 use App\Models\User;
 use App\Models\Wallet;
-use Illuminate\Http\Request;
+use App\Models\Transaction;
+use App\Http\Resources\UserResources;
+use KingFlamez\Rave\Facades\Rave as Flutterwave;
 
 class DashboardController extends Controller
 {
@@ -35,7 +34,10 @@ class DashboardController extends Controller
 
     public function show()
     {
-    return view('index');
+        $reference = Flutterwave::generateReference();
+        $public_key = config('flutterwave.publicKey');
+        // dd($public_key);
+        return view('index')->with(['reference' => $reference, 'public_key' => $public_key]);
     }
 }
 
