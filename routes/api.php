@@ -8,9 +8,13 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\WalletController;
 use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FlutterwaveController;
 use App\Http\Controllers\TransactionController;
+use Illuminate\Auth\Events\Verified;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+
 
 
 /*
@@ -54,5 +58,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
 });
 
+Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/login', [LoginController::class, 'index']);
 
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return response()->json(['message' => 'Email verification message sent']);
+})->name('verification.send');

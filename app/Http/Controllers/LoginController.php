@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\AuthenticationException;
 
 class LoginController extends Controller
@@ -45,11 +44,19 @@ class LoginController extends Controller
                 'token_type' => 'Bearer',
                 'message' => 'welcome back, you\'re now logged in'
                 ];
-      return response($response, 200);
+      return response()->json($response, 200);
    }
 
    public function show()
    {
     return view('login');
+   }
+
+   public function logout(Request $request)
+   {
+     auth()->user()->tokens()->delete();
+     return [
+         'message' => 'Logged out'
+     ];
    }
 }

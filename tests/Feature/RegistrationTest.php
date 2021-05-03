@@ -2,33 +2,43 @@
 
 namespace Tests\Feature;
 
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Laravel\Jetstream\Jetstream;
 use Tests\TestCase;
+use App\Models\User;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
+
+use Illuminate\Support\Facades\Notification;
 
 class RegistrationTest extends TestCase
 {
     use RefreshDatabase;
+        /** @test */
+        public function test_registration()
+        {
+            Notification::fake();
 
-    public function test_registration_screen_can_be_rendered()
-    {
-        $response = $this->get('/register');
+            $response = $this->post('/api/register', [
+                'first_name' => 'Caleb',
+                'last_name' => 'Bala',
+                'phone' => '08163633741',
+                'email' => 'trinityace6@gmail.com',
+                'password'=> '12345678',
+                'phone' => '0809953245',
+                'password_confirmation'=> '12345678',
+                'country' => 'NG',
+                'role_id'=> 1
+            ]);
 
-        $response->assertStatus(200);
-    }
+            $response->assertSuccessful();
 
-    public function test_new_users_can_register()
-    {
-        $response = $this->post('/register', [
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => 'password',
-            'password_confirmation' => 'password',
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature(),
-        ]);
+            $user = User::where('email', 'trinityace6@gmail.com')->first();
+            Notification::assertSentTo($user, VerifyEmail::class);
 
-        $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
-    }
+            $this->assertDatabaseHas('users', ['email' => 'trinityace6@gmail.com']);
+
+            //Assert
+        }
+
+
 }

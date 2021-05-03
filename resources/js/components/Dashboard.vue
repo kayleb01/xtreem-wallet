@@ -313,12 +313,18 @@
                 <form @submit.prevent="addWalletBalance()">
                     <div class="form-group mt-4">
                         <div class="form-group mt-4">
-                            <input type="text" name="amount" class="form-control form-control-lg text-center" placeholder="Enter amount" v-model="form.amount" required autofocus>
+                            <input type="text" name="amount" class="form-control form-control-lg" placeholder="Enter amount" v-model="form.amount" required autofocus>
+                        </div>
+                        <div class="form-group mt-4">
+                            <select  name="payment_option" class="form-control form-control-lg"  v-model="form.payment_option">
+                                <option value="" disabled> Select payment method</option>
+                                <option value="card">Card</option>
+                            </select>
                         </div>
                         <p class="text-mute">You will be redirected to payment gateway to procceed further.</p>
                     </div>
                     <div class="modal-footer border-0">
-                        <button type="submit" class="btn btn-default p-2 btn-rounded shadow btn-block close">Pay</button>
+                        <button type="submit" class="btn btn-default p-2 btn-rounded shadow btn-block close" >Pay</button>
                     </div>
                 </form>
             </div>
@@ -455,11 +461,11 @@ export default {
             transactions: '',
             wallet: '',
             public_key:'FLWPUBK_TEST-db5bc2dc21efad5023ae7b13aa04cd2e-X',
-            payment_method:'card',
             custom_title:"fund wallet",
             custom_logo:'/storage/img/logo/png',
             form:{
-                amount:''
+                amount:'',
+                payment_option:''
             }
         }
     },

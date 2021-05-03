@@ -16,12 +16,13 @@ class UserTableSeeder extends Seeder
     public function run()
     {
        DB::table('users')->insert([
-           'name' => 'Ibrahim Bala',
+           'first_name' => 'Ibrahim ',
+           'last_name' => 'Bala',
            'email' => 'ibro@gmail.com',
            'email_verified_at' => null,
            'password' => Hash::make('password'),
            'role_id' => 2,
-           'country' => 'Nigeria',
+           'country' => 'NG',
            'created_at' => now(),
            'updated_at' => now()
 

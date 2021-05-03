@@ -93,49 +93,49 @@ $(document).ready(function () {
 
 
     /* drag and scroll like mobile remove while creating mobile app */
-    (function ($) {
-        $.dragScroll = function (options) {
-            var settings = $.extend({
-                scrollVertical: true,
-                scrollHorizontal: true,
-                cursor: null
-            }, options);
+    // (function ($) {
+    //     $.dragScroll = function (options) {
+    //         var settings = $.extend({
+    //             scrollVertical: true,
+    //             scrollHorizontal: true,
+    //             cursor: null
+    //         }, options);
 
-            var clicked = false,
-                clickY, clickX;
+    //         var clicked = false,
+    //             clickY, clickX;
 
-            var getCursor = function () {
-                if (settings.cursor) return settings.cursor;
-                if (settings.scrollVertical && settings.scrollHorizontal) return 'url(img/touch.png), move';
-                if (settings.scrollVertical) return 'row-resize';
-                if (settings.scrollHorizontal) return 'col-resize';
-            }
+    //         var getCursor = function () {
+    //             if (settings.cursor) return settings.cursor;
+    //             if (settings.scrollVertical && settings.scrollHorizontal) return 'url(img/touch.png), move';
+    //             if (settings.scrollVertical) return 'row-resize';
+    //             if (settings.scrollHorizontal) return 'col-resize';
+    //         }
 
-            var updateScrollPos = function (e, el) {
-                $('html').css('cursor', getCursor());
-                var $el = $(el);
-                settings.scrollVertical && $el.scrollTop($el.scrollTop() + (clickY - e.pageY));
-                settings.scrollHorizontal && $el.scrollLeft($el.scrollLeft() + (clickX - e.pageX));
-            }
+    //         var updateScrollPos = function (e, el) {
+    //             $('html').css('cursor', getCursor());
+    //             var $el = $(el);
+    //             settings.scrollVertical && $el.scrollTop($el.scrollTop() + (clickY - e.pageY));
+    //             settings.scrollHorizontal && $el.scrollLeft($el.scrollLeft() + (clickX - e.pageX));
+    //         }
 
-            $(document).on({
-                'mousemove': function (e) {
-                    clicked && updateScrollPos(e, this);
-                },
-                'mousedown': function (e) {
-                    clicked = true;
-                    clickY = e.pageY;
-                    clickX = e.pageX;
-                },
-                'mouseup': function () {
-                    clicked = false;
-                    $('html').css('cursor', 'url(img/logo-cursor.png), auto');
-                }
-            });
-        }
-    }(jQuery))
+    //         $(document).on({
+    //             'mousemove': function (e) {
+    //                 clicked && updateScrollPos(e, this);
+    //             },
+    //             'mousedown': function (e) {
+    //                 clicked = true;
+    //                 clickY = e.pageY;
+    //                 clickX = e.pageX;
+    //             },
+    //             'mouseup': function () {
+    //                 clicked = false;
+    //                 $('html').css('cursor', 'url(img/logo-cursor.png), auto');
+    //             }
+    //         });
+    //     }
+    // }(jQuery))
 
-    $.dragScroll();
+    // $.dragScroll();
     /* End of drag and scroll like mobile remove while creating mobile app */
 
 

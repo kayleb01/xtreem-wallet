@@ -22,14 +22,14 @@ class FlutterwaveController extends Controller
         $data = [
             'payment_options' => request()->payment_option,
             'amount' => request()->amount,
-            'email' => request()->email,
+            'email' => auth()->user()->email,
             'tx_ref' => $reference,
             'currency' => "NGN",
             'redirect_url' => route('callback'),
             'customer' => [
-                'email' => request()->email,
-                "phonenumber" => request()->phone,
-                "name" => request()->name
+                'email' => auth()->user()->email,
+                "phonenumber" => auth()->user()->phone,
+                "name" => auth()->user()->first_name
             ],
 
             "customizations" => [
@@ -37,6 +37,8 @@ class FlutterwaveController extends Controller
                 "description" => "20th October"
             ]
         ];
+
+        // dd($data);
 
         $payment = Flutterwave::initializePayment($data);
 
@@ -47,11 +49,12 @@ class FlutterwaveController extends Controller
              Transaction::create([
             'currency_id'       => $this->getCurrencyByType($data['currency']),
             'status'            => 0,
-            'user_id'           => 1,
+            'user_id'           => auth()->id(),
             'amount'            => $data['amount'],
             'created_at'        => now(),
             'tx_ref'            => $data['tx_ref']
         ]);
+        dd($payment['link']);
         return redirect($payment['link']);
     }
 
