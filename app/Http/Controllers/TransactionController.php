@@ -54,7 +54,7 @@ class TransactionController extends Controller
         }else{
 
             return  response()->json([
-                'message' => 'Error updating record, please contact the Administrator'
+                'message' => 'Error updating record, please try again later'
                  ], 500);
         }
 
@@ -88,4 +88,10 @@ class TransactionController extends Controller
             'amount'         => 'required|numeric'
         ]);
     }
+
+    public function transactions()
+    {
+        return view('all-transaction');
+    }
 }
+
