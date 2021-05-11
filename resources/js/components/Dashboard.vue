@@ -85,7 +85,6 @@
             <div class="card-body border-bottom">
                 <div class="row">
                       <div >
-
                </div>
                     <div class="col" v-for="(balance, index) in wallet.data" :key="index">
                         <p class="text-normal">My Balance</p>
@@ -94,6 +93,7 @@
                         <h3 class="mb-0 font-weight-normal" v-if="balance.currency.type == 'USD'">${{balance.balance}}</h3>
                         <h6 v-else>Upgrage to have balance in other currencies</h6>
                     </div>
+
                     <div class="col-auto">
                         <button class="btn btn-default btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"><i class="material-icons">add</i></button>
                     </div>
@@ -544,14 +544,15 @@ export default {
                     currency: "NGN",
                     payment_options: this.payment_method,
                     country:"NG",
-                    redirect_url: 'http://localhost:8000/pay',
+                    //redirect_url: 'http://localhost:8000/pay',
                     customer: {
                     name: this.user.first_name,
                     email: this.user.email,
 
                     },
                      callback: function (data) {
-                       axios.post('/api/transaction',
+                         console.log(data.transaction_id, data.amount)
+                       axios.post('/api/transaction/store',
                        {
                            transaction_id: data.transaction_id,
                            action:"Deposit",
@@ -570,9 +571,6 @@ export default {
 
 
 
-                    },
-                    onclose: function() {
-                        // close modal
                     },
                     customizations: {
                     title: this.custom_title,

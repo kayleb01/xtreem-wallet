@@ -33,7 +33,7 @@ class TransactionController extends Controller
             $transaction = Transaction::create([
                 'transaction_id' => $request->transaction_id,
                 'action' => $request->action,
-                'currency' => $request->currency_id,
+                'currency' => $request->currency,
                 'user_id' => auth()->id(),
                 'amount' => $request->amount,
                 'flw_ref' => $request->flw_ref,

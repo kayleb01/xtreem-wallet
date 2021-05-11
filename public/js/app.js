@@ -16702,13 +16702,14 @@ __webpack_require__.r(__webpack_exports__);
         currency: "NGN",
         payment_options: this.payment_method,
         country: "NG",
-        redirect_url: 'http://localhost:8000/pay',
+        //redirect_url: 'http://localhost:8000/pay',
         customer: {
           name: this.user.first_name,
           email: this.user.email
         },
         callback: function callback(data) {
-          axios.post('/api/transaction', {
+          console.log(data.transaction_id, data.amount);
+          axios.post('/api/transaction/store', {
             transaction_id: data.transaction_id,
             action: "Deposit",
             currency: data.currency,
@@ -16722,8 +16723,6 @@ __webpack_require__.r(__webpack_exports__);
               'Authorization': 'Bearer ' + this.token
             }
           });
-        },
-        onclose: function onclose() {// close modal
         },
         customizations: {
           title: this.custom_title,

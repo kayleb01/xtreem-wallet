@@ -20,11 +20,7 @@ class TransactionResource extends JsonResource
             'action' => $this->action,
             'status' => $this->status,
             'amount' => number_format($this->amount / 100, 2, '.', ','),
-            'created_at' => $this->created_at,
-            'currency' => [
-                'type' => $this->currency->type,
-                'country' => $this->currency->country
-            ]
+            'created_at' => $this->created_at
 
         ];
     }

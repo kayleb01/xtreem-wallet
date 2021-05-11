@@ -28,9 +28,6 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::get('currencies', [CurrencyController::class, 'index']);
@@ -55,6 +52,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/pay', [FlutterwaveController::class, 'initialize'])->name('pay');
     // The callback url after a payment
     Route::get('/rave/callback', [FlutterwaveController::class, 'callback'])->name('callback');
+
+    //get logged in user details
+    Route::get('/user', [DashboardController::class,  'user']);
 
 });
 
