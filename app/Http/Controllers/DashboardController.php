@@ -39,5 +39,10 @@ class DashboardController extends Controller
         // dd($public_key);
         return view('index')->with(['reference' => $reference, 'public_key' => $public_key]);
     }
+
+    public function user()
+    {
+        return response()->json(['user' => auth()->user()], 200);
+    }
 }
 

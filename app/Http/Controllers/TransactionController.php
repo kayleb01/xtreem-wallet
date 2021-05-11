@@ -33,9 +33,11 @@ class TransactionController extends Controller
             $transaction = Transaction::create([
                 'transaction_id' => $request->transaction_id,
                 'action' => $request->action,
-                'currency_id' => $request->currency_id,
+                'currency' => $request->currency_id,
                 'user_id' => auth()->id(),
-                'amount' => $request->amount
+                'amount' => $request->amount,
+                'flw_ref' => $request->flw_ref,
+                'tx_ref' => $request->tx_ref
             ]);
              return new TransactionResource($transaction);
     }

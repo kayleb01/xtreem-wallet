@@ -441,18 +441,6 @@ export default {
               required: false,
               default: false //set to true if you are going live
             },
-             callback: {
-              type: Function,
-              required: true,
-              default: () => {
-                console.log('Payment made, verify payment');
-              }
-            },
-            close: {
-              type: Function,
-              required: true,
-              default: () => {}
-            },
           },
 
     data() {
@@ -460,9 +448,10 @@ export default {
             token:'',
             transactions: '',
             wallet: '',
+            user:'',
             public_key:'FLWPUBK_TEST-db5bc2dc21efad5023ae7b13aa04cd2e-X',
             custom_title:"fund wallet",
-            custom_logo:'/storage/img/logo/png',
+            custom_logo:'http://localhost:8000/storage/img/logo.png',
             form:{
                 amount:'',
                 payment_option:''
@@ -470,19 +459,18 @@ export default {
         }
     },
     computed: {
-  reference() {
-    let text = "";
-    let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (let i = 0; i < 10; i++)
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-    return text;
-  }
-},
+        reference() {
+            let text = "";
+            let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            for (let i = 0; i < 10; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+            return text;
+        }
+    },
     created(){
         if(!document.cookie.split(';').some((item) => item.trim().startsWith('key='))){
                     window.location.assign('/login')
             }
-
          const script = document.createElement("script");
             script.src = !this.isProduction
               ? "https://ravemodal-dev.herokuapp.com/v3.js"
@@ -500,23 +488,23 @@ export default {
                     this.token  = decodeURIComponent(cc[1])
 
                 }
-
             }
+        }
 
-    }
 
-    document.cookie ="SameSite=Lax";
     //load the transaction history
     this.fetch_transactions()
     this.fetch_wallet()
+    this.fetch_user()
 
     },
+
     methods: {
         fetch_transactions(){
             axios.get('api/transactions',{
                 headers:{
-                        'contentType':'application/json',
-                        'accept':'application/json',
+                        'Content-Type':'application/json',
+                        'Accept':'application/json',
                         'Authorization':'Bearer '+this.token
                     }
             })
@@ -534,39 +522,76 @@ export default {
             .then((data) => this.wallet = (data.data))
             .catch(err => console.log(err))
         },
-        addWalletBalance(){
 
-            // window.FlutterwaveCheckout({
-            //         public_key: this.public_key,
-            //         tx_ref: this.reference,
-            //         amount: this.form.amount,
-            //         currency: "NGN",
-            //         payment_options: this.payment_method,
-            //         customer: {
-            //         name: this.wallet.user.name,
-            //         email: this.wallet.user.email,
-            //         },
-            //         callback: response => this.callback(response),
-            //         customizations: {
-            //         title: this.custom_title,
-            //         description: "Payment for items in cart",
-            //         logo: this.custom_logo,
-            //         },
-            //     });
-
-
-            axios.post('/api/pay', this.form ,{
-
+        fetch_user(){
+            axios.get('api/user',{
                 headers:{
                     'contentType':'application/json',
                     'accept':'application/json',
                     'Authorization':'Bearer '+this.token
-                        }
                     }
-            )
-            // .then((response) => {
-            //     console.log(response)
-            // })
+            })
+            .then((data) => this.user = data.data)
+            .catch(err => console.log(err))
+        },
+
+        addWalletBalance(){
+
+            window.FlutterwaveCheckout({
+                    public_key: this.public_key,
+                    tx_ref: this.reference,
+                    amount: this.form.amount,
+                    currency: "NGN",
+                    payment_options: this.payment_method,
+                    country:"NG",
+                    redirect_url: 'http://localhost:8000/pay',
+                    customer: {
+                    name: this.user.first_name,
+                    email: this.user.email,
+
+                    },
+                     callback: function (data) {
+                       axios.post('/api/transaction',
+                       {
+                           transaction_id: data.transaction_id,
+                           action:"Deposit",
+                           currency:data.currency,
+                           amount: data.amount,
+                            flw_ref: data.flw_ref,
+                            tx_ref: data.tx_ref
+                       },
+                       {
+                           headers:{
+                               'contentType':'application/json',
+                                'accept':'application/json',
+                                'Authorization':'Bearer '+this.token
+                           }
+                       })
+
+
+
+                    },
+                    onclose: function() {
+                        // close modal
+                    },
+                    customizations: {
+                    title: this.custom_title,
+                    description: "Payment for items in cart",
+                    logo: this.custom_logo,
+                    },
+                });
+
+
+            // axios.post('/api/pay', this.form ,{
+
+            //     headers:{
+            //         'contentType':'text/html',
+            //         'accept':'text/html',
+            //         'Authorization':'Bearer '+this.token
+            //             }
+            //         }
+            // )
+
             // .catch((error) => {
             //     console.log(error)
             // })

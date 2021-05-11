@@ -2884,9 +2884,9 @@ pre {
     background: -moz-linear-gradient(-45deg, #a700ff 0%, #00189a 100%);
     background: -webkit-gradient(left top, right bottom, color-stop(0%, #a700ff), color-stop(100%, #00189a));
     background: -webkit-linear-gradient(-45deg, #a700ff 0%, #00189a 100%);
-    background: -o-linear-gradient(-45deg, #a700ff 0%, #00189a 100%);
+    background: -o-linear-gradient(-45deg, #2b053f 0%, #00189a 100%);
     background: -ms-linear-gradient(-45deg, #a700ff 0%, #00189a 100%);
-    background: linear-gradient(135deg, #a700ff 0%, #00189a 100%);
+    background: linear-gradient(135deg, #00189a 0%, #00189a 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d800ff', endColorstr='#00189a', GradientType=1);
 }
 

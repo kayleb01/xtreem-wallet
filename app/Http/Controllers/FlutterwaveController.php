@@ -54,8 +54,8 @@ class FlutterwaveController extends Controller
             'created_at'        => now(),
             'tx_ref'            => $data['tx_ref']
         ]);
-        dd($payment['link']);
-        return redirect($payment['link']);
+        // dd($payment['data']['link']);
+        return redirect($payment['data']['link']);
     }
 
     /**
