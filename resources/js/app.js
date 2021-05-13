@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard.vue';
 import Register from './components/Register.vue'
 import Transactions from './components/Transactions.vue'
 import Settings from './components/Settings.vue'
+import CompleteTransaction from './components/CompleteTransaction'
 
 createApp({
     components:{
@@ -15,7 +16,8 @@ createApp({
         Dashboard,
         Register,
         Transactions,
-        Settings
+        Settings,
+        CompleteTransaction
     }
 }).mount('#app');
 // const app = Vue({

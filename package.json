@@ -10,7 +10,6 @@
         "production": "mix --production"
     },
     "devDependencies": {
-
         "@tailwindcss/forms": "^0.2.1",
         "@tailwindcss/typography": "^0.3.0",
         "@vue/compiler-sfc": "^3.0.5",
@@ -27,6 +26,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "vue-money-format": "^1.2.1",
         "vue-router": "^3.5.1"
     }
 }

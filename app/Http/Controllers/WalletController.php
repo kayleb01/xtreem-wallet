@@ -11,8 +11,8 @@ class WalletController extends Controller
     public function index()
     {
         if (!auth()->user()->isAdmin) {
-          $wallet = Wallet::where('user_id', auth()->user()->id)
-                    ->with('user', 'currency')
+          $wallet = Wallet::where('user_id', auth()->id())
+                    ->with('user')
                     ->get();
 
         return WalletResource::collection($wallet);

@@ -28,7 +28,7 @@ Route::get('/dashboard', [DashboardController::class, 'show']);
 Route::get('/register', [RegisterController::class, 'index']);
 Route::get('/transactions', [TransactionController::class, 'transactions']);
 Route::get('/settings', [SettingController::class, 'index']);
-Route::get('/pay', [SettingController::class, 'pay']);
+Route::get('/paid', [TransactionController::class, 'transaction_successful']);
 
 
 

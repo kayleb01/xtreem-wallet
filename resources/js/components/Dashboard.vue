@@ -67,7 +67,7 @@
     <div class="container-fluid mb-3">
         <div class="card bg-template shadow mt-4 h-190">
             <div class="card-body">
-                    <!-- {{-- <div class="row">
+                    <!-- -- <div class="row">
                         <div class="col-auto">
                             <figure class="avatar avatar-60"><img src="img/user1.png" alt=""></figure>
                         </div>
@@ -75,7 +75,7 @@
                             <h5 class="mb-1">Emmanuel Bright</h5>
                             <p class="text-mute small">Elite</p>
                         </div>
-                    </div> --}} -->
+                    </div> -- -->
             </div>
         </div>
 
@@ -84,14 +84,11 @@
             <div class="card mb-4 shadow">
             <div class="card-body border-bottom">
                 <div class="row">
-                      <div >
-               </div>
                     <div class="col" v-for="(balance, index) in wallet.data" :key="index">
                         <p class="text-normal">My Balance</p>
-                        <h3 class="mb-0 font-weight-normal mb-3" v-if="balance.currency.type == 'NGN'"> ₦{{balance.balance}} </h3>
-                        <hr>
-                        <h3 class="mb-0 font-weight-normal" v-if="balance.currency.type == 'USD'">${{balance.balance}}</h3>
-                        <h6 v-else>Upgrage to have balance in other currencies</h6>
+                        <h3 class="mb-0 font-weight-normal mb-3"> ₦{{balance.balance}} </h3>
+
+
                     </div>
 
                     <div class="col-auto">
@@ -434,13 +431,17 @@
     </div>
 </template>
 <script>
+import MoneyFormat from 'vue-money-format'
 export default {
+    components: {
+    'money-format': MoneyFormat
+    },
      props: {
             isProduction: {
               type: Boolean,
               required: false,
               default: false //set to true if you are going live
-            },
+            }
           },
 
     data() {
@@ -454,7 +455,7 @@ export default {
             custom_logo:'http://localhost:8000/storage/img/logo.png',
             form:{
                 amount:'',
-                payment_option:''
+                payment_option:'',
             }
         }
     },
@@ -486,7 +487,6 @@ export default {
                 const cc = authCookie[i].split("=");
                 if ('key' == cc[0].trim()) {
                     this.token  = decodeURIComponent(cc[1])
-
                 }
             }
         }
@@ -519,7 +519,10 @@ export default {
                     'Authorization':'Bearer '+this.token
                     }
             })
-            .then((data) => this.wallet = (data.data))
+            .then((data) => {
+                // console.log(data)
+                this.wallet = data.data
+                })
             .catch(err => console.log(err))
         },
 
@@ -542,41 +545,41 @@ export default {
                     tx_ref: this.reference,
                     amount: this.form.amount,
                     currency: "NGN",
-                    payment_options: this.payment_method,
+                    payment_options: this.form.payment_option,
                     country:"NG",
-                    //redirect_url: 'http://localhost:8000/pay',
                     customer: {
                     name: this.user.first_name,
                     email: this.user.email,
 
                     },
-                     callback: function (data) {
-                         console.log(data.transaction_id, data.amount)
+                    callback: function (data) {
                        axios.post('/api/transaction/store',
                        {
                            transaction_id: data.transaction_id,
                            action:"Deposit",
                            currency:data.currency,
                            amount: data.amount,
-                            flw_ref: data.flw_ref,
-                            tx_ref: data.tx_ref
+                           flw_ref: data.flw_ref,
+                           tx_ref: data.tx_ref
                        },
                        {
-                           headers:{
-                               'contentType':'application/json',
-                                'accept':'application/json',
-                                'Authorization':'Bearer '+this.token
-                           }
+                            headers:{
+                                'contentType':'application/json',
+                                'Accept':'application/json',
+                                'Authorization':'Bearer 4|a0lKodHd3LBGNdC6cqWF4IhjXyZmEC8MdXSBOSzC'
+                            }
                        })
-
-
-
+                       .then((response) => {
+                           console.log(response.data.data.transaction_id)
+                         window.location.assign(`/paid?status=successful&transaction_id=${response.data.data.transaction_id}`)
+                       })
                     },
                     customizations: {
                     title: this.custom_title,
                     description: "Payment for items in cart",
                     logo: this.custom_logo,
                     },
+                    //redirect_url: 'http://localhost:8000/paid',
                 });
 
 

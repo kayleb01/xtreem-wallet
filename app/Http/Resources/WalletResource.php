@@ -19,18 +19,11 @@ class WalletResource extends JsonResource
             'balance' => $this->balance,
             'user' => [
                 'id' => $this->user->id,
-                'name' => $this->user->name,
+                'name' => $this->user->first_name,
                 'email'=> $this->user->email,
                 'profile_photo_url' =>$this->user->profile_photo_url,
                 'country' => $this->user->country
-            ],
-        'currency' => [
-            'id' => $this->currency->id,
-            'type' => $this->currency->type,
-            'exchange_rate'=> $this->currency->exchange_rate,
-            'country' =>$this->currency->country,
-
-        ],
+            ]
 
         ];
     }

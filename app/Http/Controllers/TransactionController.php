@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Resources\TransactionResource;
+use App\Models\Wallet;
 
 class TransactionController extends Controller
 {
@@ -39,6 +40,14 @@ class TransactionController extends Controller
                 'flw_ref' => $request->flw_ref,
                 'tx_ref' => $request->tx_ref
             ]);
+
+            $userWallet = Wallet::where('user_id', auth()->id())->first();
+
+            $userBalance = $userWallet->balance + $request->amount;
+            $userWallet->update([
+               'balance' => $userBalance
+            ]);
+
              return new TransactionResource($transaction);
     }
 
@@ -61,6 +70,24 @@ class TransactionController extends Controller
         }
 
     }
+
+
+    public function transaction_successful(Request $request)
+    {
+        if ($request->query('status') == 'successful') {
+
+          $transaction_id = $request->query('transaction_id');//from the uri
+          $transaction = Transaction::where('transaction_id', $transaction_id)
+                        ->first();
+          return view('transaction_successful', compact('transaction'));
+
+        }else{
+            //abort bad request
+            abort(400);
+        }
+
+    }
+
 
     public function destroy(Transaction $transaction)
     {
@@ -86,7 +113,7 @@ class TransactionController extends Controller
         $this->validate($request, [
             'transaction_id' => 'required',
             'action'         => 'required',
-            'currency_id'    => 'required',
+            'currency'    => 'required',
             'amount'         => 'required|numeric'
         ]);
     }
