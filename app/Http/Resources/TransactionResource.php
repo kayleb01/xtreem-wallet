@@ -21,7 +21,6 @@ class TransactionResource extends JsonResource
             'status' => $this->status,
             'amount' => number_format($this->amount / 100, 2, '.', ','),
             'created_at' => $this->created_at
-
         ];
     }
 }
