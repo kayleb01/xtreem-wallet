@@ -50,15 +50,9 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                <!-- <li class="nav-item active">
-                    <a class="nav-link text-custom" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-
-                </li> -->
+                <!-- <ul class="navbar-nav mr-auto">
                 <li class="nav-item float-right"><a href="#" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">9+</span></a></li>
-                </ul>
+                </ul> -->
             </div>
         </nav>
             </div>
@@ -86,11 +80,8 @@
                 <div class="row">
                     <div class="col" v-for="(balance, index) in wallet.data" :key="index">
                         <p class="text-normal">My Balance</p>
-                        <h3 class="mb-0 font-weight-normal mb-3"> ₦{{balance.balance}} </h3>
-
-
+                        <h3 class="mb-0 font-weight-normal mb-3"> ₦{{new Intl.NumberFormat('en-IN').format(balance.balance)}} </h3>
                     </div>
-
                     <div class="col-auto">
                         <button class="btn btn-default btn-rounded-54 shadow" data-toggle="modal" data-target="#addmoney"><i class="material-icons">add</i></button>
                     </div>
@@ -114,15 +105,17 @@
         <div class="col-lg-6 col-sm-12 col-md-6 col-xs-12">
             <div class="card shadow">
                 <div class="card-body">
-                        <h5 class="card-title"><span class="material-icons"> history</span>  Transaction History</h5>
+                        <h5 class="card-title">
+                            <span class="material-icons"> history</span>  Transaction History
+                        </h5>
                         <div class="d-flex justify-content-around">
-                            <div class="h-100 bg-white p-3 m-3 text-center">
-                                <span class="material-icons md-48"> trending_up</span><br><br>
+                            <div class="h-11 bg-white p-3 m-0 text-center">
+                                <span class="material-icons md-2"> trending_up</span><br><br>
                                 <h5>Check Status</h5>
                             </div>
-                            <div class="h-140 bg-white p-3 m-3 ml-2 text-center">
+                            <div class="h-14 bg-white p-1 m-2 ml-2 text-center">
                                 <h2 class="font-weight-bold">0</h2>
-                                <span class=" "><h6>Transactions</h6> </span>
+                                <span class=""><h6>Transactions</h6> </span>
                                 <span class="small font-weight-bold"></span>
                             </div>
                         </div>
@@ -450,8 +443,8 @@ export default {
             transactions: '',
             wallet: '',
             user:'',
-            public_key:'FLWPUBK_TEST-db5bc2dc21efad5023ae7b13aa04cd2e-X',
-            custom_title:"fund wallet",
+            public_key:'FLWPUBK_TEST-db5bc2dc21efad5023ae7b13aa04cd2e-X', //change the public key when going live
+            custom_title:"Fund Wallet",
             custom_logo:'http://localhost:8000/storage/img/logo.png',
             form:{
                 amount:'',
@@ -520,7 +513,6 @@ export default {
                     }
             })
             .then((data) => {
-                // console.log(data)
                 this.wallet = data.data
                 })
             .catch(err => console.log(err))
@@ -579,23 +571,10 @@ export default {
                     description: "Payment for items in cart",
                     logo: this.custom_logo,
                     },
-                    //redirect_url: 'http://localhost:8000/paid',
+
                 });
 
 
-            // axios.post('/api/pay', this.form ,{
-
-            //     headers:{
-            //         'contentType':'text/html',
-            //         'accept':'text/html',
-            //         'Authorization':'Bearer '+this.token
-            //             }
-            //         }
-            // )
-
-            // .catch((error) => {
-            //     console.log(error)
-            // })
         }
     }
 }

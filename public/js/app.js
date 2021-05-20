@@ -16626,7 +16626,8 @@ __webpack_require__.r(__webpack_exports__);
       wallet: '',
       user: '',
       public_key: 'FLWPUBK_TEST-db5bc2dc21efad5023ae7b13aa04cd2e-X',
-      custom_title: "fund wallet",
+      //change the public key when going live
+      custom_title: "Fund Wallet",
       custom_logo: 'http://localhost:8000/storage/img/logo.png',
       form: {
         amount: '',
@@ -16703,7 +16704,6 @@ __webpack_require__.r(__webpack_exports__);
           'Authorization': 'Bearer ' + this.token
         }
       }).then(function (data) {
-        // console.log(data)
         _this2.wallet = data.data;
       })["catch"](function (err) {
         return console.log(err);
@@ -16759,19 +16759,8 @@ __webpack_require__.r(__webpack_exports__);
           title: this.custom_title,
           description: "Payment for items in cart",
           logo: this.custom_logo
-        } //redirect_url: 'http://localhost:8000/paid',
-
-      }); // axios.post('/api/pay', this.form ,{
-      //     headers:{
-      //         'contentType':'text/html',
-      //         'accept':'text/html',
-      //         'Authorization':'Bearer '+this.token
-      //             }
-      //         }
-      // )
-      // .catch((error) => {
-      //     console.log(error)
-      // })
+        }
+      });
     }
   }
 });
@@ -17057,7 +17046,7 @@ var _hoisted_4 = {
   "class": "wrapper homepage"
 };
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"header\"><nav class=\"navbar navbar-expand-lg navbar-dark d-flex justify-center \"><a class=\"navbar-brand text-custom menu-btn\" style=\"color:#036 !important;\">XTREEM WALLET</a><button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"><span class=\"navbar-toggler-icon bg-primary rounded\"></span></button><div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\"><ul class=\"navbar-nav mr-auto\"><!-- &lt;li class=&quot;nav-item active&quot;&gt;\n                    &lt;a class=&quot;nav-link text-custom&quot; href=&quot;#&quot;&gt;Home &lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;\n                &lt;/li&gt;\n                &lt;li class=&quot;nav-item&quot;&gt;\n\n                &lt;/li&gt; --><li class=\"nav-item float-right\"><a href=\"#\" class=\"btn  btn-link text-dark position-relative\"><i class=\"material-icons\">notifications_none</i><span class=\"counts\">9+</span></a></li></ul></div></nav></div>", 1);
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"header\"><nav class=\"navbar navbar-expand-lg navbar-dark d-flex justify-center \"><a class=\"navbar-brand text-custom menu-btn\" style=\"color:#036 !important;\">XTREEM WALLET</a><button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"><span class=\"navbar-toggler-icon bg-primary rounded\"></span></button><div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\"><!-- &lt;ul class=&quot;navbar-nav mr-auto&quot;&gt;\n                &lt;li class=&quot;nav-item float-right&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;btn  btn-link text-dark position-relative&quot;&gt;&lt;i class=&quot;material-icons&quot;&gt;notifications_none&lt;/i&gt;&lt;span class=&quot;counts&quot;&gt;9+&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;\n                &lt;/ul&gt; --></div></nav></div>", 1);
 
 var _hoisted_6 = {
   "class": "container-fluid mb-3"
@@ -17111,7 +17100,7 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card-footer bg-none\"><div class=\"row\"><div class=\"col\"><p><i class=\"material-icons text-danger vm small\">arrow_downward</i><br><small class=\"text-mute\">INR</small></p></div><div class=\"col text-center\"><p><i class=\"material-icons text-success vm small\">arrow_upward</i><br><small class=\"text-mute\">USD</small></p></div><div class=\"col text-right\"><p><i class=\"material-icons text-success vm small mr-1\">arrow_upward</i><br><small class=\"text-mute\">GBP</small></p></div></div></div>", 1);
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-lg-6 col-sm-12 col-md-6 col-xs-12\"><div class=\"card shadow\"><div class=\"card-body\"><h5 class=\"card-title\"><span class=\"material-icons\"> history</span> Transaction History</h5><div class=\"d-flex justify-content-around\"><div class=\"h-100 bg-white p-3 m-3 text-center\"><span class=\"material-icons md-48\"> trending_up</span><br><br><h5>Check Status</h5></div><div class=\"h-140 bg-white p-3 m-3 ml-2 text-center\"><h2 class=\"font-weight-bold\">0</h2><span class=\" \"><h6>Transactions</h6></span><span class=\"small font-weight-bold\"></span></div></div></div></div></div>", 1);
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-lg-6 col-sm-12 col-md-6 col-xs-12\"><div class=\"card shadow\"><div class=\"card-body\"><h5 class=\"card-title\"><span class=\"material-icons\"> history</span> Transaction History </h5><div class=\"d-flex justify-content-around\"><div class=\"h-11 bg-white p-3 m-0 text-center\"><span class=\"material-icons md-2\"> trending_up</span><br><br><h5>Check Status</h5></div><div class=\"h-14 bg-white p-1 m-2 ml-2 text-center\"><h2 class=\"font-weight-bold\">0</h2><span class=\"\"><h6>Transactions</h6></span><span class=\"small font-weight-bold\"></span></div></div></div></div></div>", 1);
 
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"container\"><div class=\"row\"><div class=\"swiper-container icon-slide top mb-4\"><div class=\"swiper-wrapper\"><a href=\"\" class=\"swiper-slide text-center\" data-toggle=\"modal\" data-target=\"#paymodal\"><div class=\"avatar avatar-60 no-shadow border-0\"><div class=\"overlay bg-template\"></div><i class=\"material-icons text-template\">local_atm</i></div><p class=\"small mt-2\">Transfer</p></a><a href=\"\" class=\"swiper-slide text-center\" data-toggle=\"modal\" data-target=\"#sendmoney\"><div class=\"avatar avatar-60 no-shadow border-0\"><div class=\"overlay bg-template\"></div><i class=\"material-icons text-template\">phone</i></div><p class=\"small mt-2\"> Buy Airtime</p></a><a href=\"\" class=\"swiper-slide text-center\"><div class=\"avatar avatar-60 no-shadow border-0\"><div class=\"overlay bg-template\"></div><i class=\"material-icons text-template\">assignment</i></div><p class=\"small mt-2\">Bills</p></a></div><div class=\"swiper-pagination\"></div></div></div><div class=\"row\"><div class=\"container px-0\"><!-- Swiper --><div class=\"swiper-container offer-slide\"><div class=\"swiper-wrapper\"><div class=\"swiper-slide\"><div class=\"card shadow border-0 bg-template\"><div class=\"card-body\"><div class=\"row\"><div class=\"col-auto pr-0\"><!-- &lt;img src=&quot;img/graphics-carousel-scheme1.png&quot; alt=&quot;&quot; class=&quot;mw-100&quot;&gt; --></div><div class=\"col align-self-center\"><h5 class=\"mb-2 font-weight-normal\">Gold loan scheme</h5><p class=\"text-mute\">Get all money at market rate of gold</p></div></div></div></div></div><div class=\"swiper-slide\"><div class=\"card shadow border-0 bg-template\"><div class=\"card-body\"><div class=\"row\"><div class=\"col pr-0 align-self-center\"><h5 class=\"mb-2 font-weight-normal\">Gold loan scheme</h5><p class=\"text-mute\">Get all money at market rate of gold</p></div><div class=\"col-auto\"><!-- &lt;img src=&quot;img/graphics-carousel-scheme1.png&quot; alt=&quot;&quot; class=&quot;mw-100&quot;&gt; --></div></div></div></div></div></div></div></div></div></div><div class=\"container mt-4\"><div style=\"display:inline;\"><span class=\"subtitle\">Transactions</span><span class=\"float-right\"><a href=\"#\">view all</a></span></div><div class=\"card shadow border-0 mb-3\" style=\"display:block;\"><div class=\"card-body\"><div class=\"row align-items-center\"><div class=\"col-auto pr-0\"><div class=\"avatar avatar-50 no-shadow border-0\"><div class=\"overlay bg-template\"></div><i class=\"material-icons vm text-template\">local_atm</i></div></div><div class=\"col-auto align-self-center\"><h6 class=\"font-weight-normal mb-1\">Airtime</h6><p class=\"text-mute small text-secondary\">MTN</p></div><div class=\"col-auto align-self-center border-left\"><h6 class=\"font-weight-normal mb-1\">₦ 00.00</h6><p class=\"text-mute small text-secondary\">Date: 15-12-2019</p></div></div></div></div><div class=\"card shadow border-0 mb-3\"><div class=\"card-body\"><div class=\"row align-items-center\"><div class=\"col-auto pr-0\"><div class=\"avatar avatar-50 no-shadow border-0\"><div class=\"overlay bg-template\"></div><i class=\"material-icons vm text-template\">local_atm</i></div></div><div class=\"col-auto align-self-center\"><h6 class=\"font-weight-normal mb-1\">Transfered</h6><p class=\"text-mute small text-secondary\">Solomon Scales</p></div><div class=\"col-auto align-self-center border-left\"><h6 class=\"font-weight-normal mb-1\">$ 658.00</h6><p class=\"text-mute small text-secondary\">Date: 18-12-2019</p></div></div></div></div></div>", 2);
 
@@ -17342,7 +17331,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
       "class": "col",
       key: index
-    }, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", _hoisted_14, " ₦" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(balance.balance), 1
+    }, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", _hoisted_14, " ₦" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(new Intl.NumberFormat('en-IN').format(balance.balance)), 1
     /* TEXT */
     )]);
   }), 128
