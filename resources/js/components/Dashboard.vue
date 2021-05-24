@@ -531,7 +531,6 @@ export default {
         },
 
         addWalletBalance(){
-
             window.FlutterwaveCheckout({
                     public_key: this.public_key,
                     tx_ref: this.reference,
@@ -555,11 +554,11 @@ export default {
                            tx_ref: data.tx_ref
                        },
                        {
-                            headers:{
-                                'contentType':'application/json',
-                                'Accept':'application/json',
-                                'Authorization':'Bearer 4|a0lKodHd3LBGNdC6cqWF4IhjXyZmEC8MdXSBOSzC'
-                            }
+                        headers:{
+                            'contentType':'application/json',
+                            'Accept':'application/json',
+                            'Authorization':'Bearer 4|a0lKodHd3LBGNdC6cqWF4IhjXyZmEC8MdXSBOSzC'
+                        }
                        })
                        .then((response) => {
                            console.log(response.data.data.transaction_id)
